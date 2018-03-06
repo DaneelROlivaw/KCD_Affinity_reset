@@ -19,9 +19,21 @@ namespace KCD_Affinity_Reset
                 double[] affectedCore = GetAffectedCore();
 
                 Console.WriteLine("KingdomCome running!");
-
-                Console.WriteLine("Max performance on Core {0}: {1}", affectedCore[0], affectedCore[1]);
-
+                
+                if (affectedCore[1] == 1)
+                    
+                {
+                    Console.WriteLine("Affinity needs to be reset as performance on core {0} is 100%.", affectedCore[0]);   
+                }
+                
+                else
+                    
+                {
+                 
+                    Console.WriteLine("Affinity does not need to be reset.");
+                    
+                }
+                
                 string strBitMask = GetBitMask(Convert.ToInt32(affectedCore[0]), Convert.ToInt32(affectedCore[2]));
 
                 Console.WriteLine("Current bitmask binary: {0}, integer: {1}", strBitMask, Convert.ToInt32(strBitMask, 2));
@@ -49,7 +61,7 @@ namespace KCD_Affinity_Reset
 
                     affectedCore = GetAffectedCore();
 
-                    Console.WriteLine("Affinity was successfully changed.");
+                    Console.WriteLine("Affinity was successfully reset.");
 
                     Console.WriteLine("Max performance on Core {0}: {1}", affectedCore[0], affectedCore[1]);
                 }
